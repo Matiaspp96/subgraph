@@ -1,0 +1,27 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Factory
+    network: mumbai
+    source:
+      address: "0xE2779614C8B99491204148DD408fD5Cf3eC538CA"
+      abi: Factory
+      startBlock: 35641876
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - EscrowCreated
+        - ProductCreated
+      abis:
+        - name: Factory
+          file: ./abis/Factory.json
+      eventHandlers:
+        - event: EscrowCreated(address,address,uint256,address,(uint256,string,string,uint256,address,bool,bytes32,string,string))
+          handler: handleEscrowCreated
+        - event: ProductCreated(uint256,string,string,uint256,address,bool,bytes32,string,string)
+          handler: handleProductCreated
+      file: ./src/factory.ts

@@ -1,0 +1,35 @@
+type EscrowCreated @entity(immutable: true) {
+  id: Bytes!
+  escrowAddress: Bytes! # address
+  seller: Bytes! # address
+  amount: BigInt! # uint256
+  token: Bytes! # address
+  product_id: BigInt! # uint256
+  product_name: String! # string
+  product_description: String! # string
+  product_price: BigInt! # uint256
+  product_seller: Bytes! # address
+  product_isSold: Boolean! # bool
+  product_ipfsHash: Bytes! # bytes32
+  product_category: String! # string
+  product_image: String! # string
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ProductCreated @entity(immutable: true) {
+  id: Bytes!
+  productId: BigInt! # uint256
+  name: String! # string
+  description: String! # string
+  price: BigInt! # uint256
+  seller: Bytes! # address
+  isSold: Boolean! # bool
+  ipfsHash: Bytes! # bytes32
+  category: String! # string
+  image: String! # string
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
